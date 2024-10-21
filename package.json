@@ -1,6 +1,7 @@
 {
   "name": "vikkaraman-portfolio",
   "version": "0.1.0",
+  "homepage": "https://vallarasu0419.github.io/Portfolio/",
   "private": true,
   "dependencies": {
     "@emailjs/browser": "^3.11.0",
@@ -19,6 +20,7 @@
     "react-router-dom": "^6.3.0",
     "react-scripts": "5.0.1",
     "react-scroll": "^1.8.7",
+    "react-scroll-parallax": "^3.4.5",
     "styled-components": "^5.3.5",
     "typewriter-effect": "^2.19.0",
     "web-vitals": "^2.1.4"

@@ -1,14 +1,30 @@
+import school from "../images/school.jpeg";
+import jpr from "../images/jpr.jpeg";
+import coty from "../images/coty1.jpeg";
+import postman from "../images/postman.jpg";
+import aws from "../images/aws.jpeg";
+import vscode from "../images/vs_code.jpeg";
+import git from "../images/git.png";
+// import github from "../images/github.jpeg";
+import figma from "../images/figma.png";
+import mobile from "../images/mobile1.jpeg";
+// import pys from "../images/pys.jpg";
+import airbuzz from "../images/Airbuzz.jpg";
+import pys_w from "../images/PYS -W.jpg";
+import PYS_C from "../images/PYS-C.jpg";
+import PYS_V from "../images/PYS-V.jpg";
+
 export const Bio = {
   name: "Vikkaraman V",
-  roles: ["Front-End Developer", "Full Stack Developer"],
+  roles: ["Front-End Developer", "React JS Developer", "Full Stack Developer"],
   description:
-    "Accomplished Front-end Developer with over 2 years of expertise in optimizing high-performance web apps. Noted for accelerating page loads by 20%, leading to remarkable conversion rate surges. Mastery of cutting-edge JavaScript tech, particularly React.js, for crafting dynamic interfaces. Pioneered innovative methods, reducing dev time by 15% and elevating site performance by 20%. Proficient in seamless team collaboration, ensuring precise project delivery. Committed to ongoing learning, driving top-tier development strategies.",
+    "As a Full Stack Developer with 2 years of hands-on experience, I specialize in JavaScript technologies, adept at customizing development environments and solving intricate technical challenges. At Cotyledon Technologies Pvt Ltd, I focused on product development and deployment, fueled by a strong passion for JavaScript and its frameworks. Skilled in both back-end and front-end aspects, I excel in team management and possess broad knowledge of developing and deploying web applications from scratch.",
   github: "https://github.com/vallarasu0419",
   resume:
-    "https://drive.google.com/file/d/1Ai-AvJk1-JgqzuqJeEs9HJajK0V-bMDc/view?usp=drive_link",
-  linkedin: "https://www.linkedin.com/in/arumuga-raja-p-931110243/",
-  twitter: "https://www.instagram.com/_raja_jo/?next=%2F",
-  insta: "https://www.instagram.com/_raja_jo/?next=%2F",
+    "https://drive.google.com/file/d/1OE6zd0QB8JDdpLIcdKhrVCXwZhsdP3dJ/view",
+  linkedin: "https://www.linkedin.com/in/vikkaraman-v-55b248225/",
+  twitter: "",
+  insta: "",
   facebook: "",
 };
 
@@ -58,12 +74,12 @@ export const skills = [
       {
         name: "React Native",
         image:
-          "https://cdn-images-1.medium.com/max/1200/1*5-aoK8IBmXve5whBQM90GA.png",
+          "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii0xMS41IC0xMC4yMzE3NCAyMyAyMC40NjM0OCI+CiAgPHRpdGxlPlJlYWN0IExvZ288L3RpdGxlPgogIDxjaXJjbGUgY3g9IjAiIGN5PSIwIiByPSIyLjA1IiBmaWxsPSIjNjFkYWZiIi8+CiAgPGcgc3Ryb2tlPSIjNjFkYWZiIiBzdHJva2Utd2lkdGg9IjEiIGZpbGw9Im5vbmUiPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIi8+CiAgICA8ZWxsaXBzZSByeD0iMTEiIHJ5PSI0LjIiIHRyYW5zZm9ybT0icm90YXRlKDYwKSIvPgogICAgPGVsbGlwc2Ugcng9IjExIiByeT0iNC4yIiB0cmFuc2Zvcm09InJvdGF0ZSgxMjApIi8+CiAgPC9nPgo8L3N2Zz4K",
       },
     ],
   },
   {
-    title: "Backend",
+    title: "Backend & Others",
     skills: [
       {
         name: "Node Js",
@@ -75,22 +91,9 @@ export const skills = [
           "data:image/png;base64,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",
       },
       {
-        name: "Graph Ql",
-        image: "https://www.vectorlogo.zone/logos/graphql/graphql-icon.svg",
-      },
-      {
-        name: "Java",
-        image:
-          "https://assets.stickpng.com/images/58480979cef1014c0b5e4901.png",
-      },
-      {
         name: "MySQL",
         image:
           "https://raw.githubusercontent.com/devicons/devicon/master/icons/mysql/mysql-original-wordmark.svg",
-      },
-      {
-        name: "Postgresql",
-        image: "https://www.postgresql.org/media/img/about/press/elephant.png",
       },
       {
         name: "MongoDB",
@@ -98,43 +101,8 @@ export const skills = [
           "https://raw.githubusercontent.com/devicons/devicon/master/icons/mongodb/mongodb-original-wordmark.svg",
       },
       {
-        name: "Firebase",
-        image: "https://www.vectorlogo.zone/logos/firebase/firebase-icon.svg",
-      },
-    ],
-  },
-  // {
-  //   title: "Android",
-  //   skills: [
-  //     {
-  //       name: "Java",
-  //       image:
-  //         "https://raw.githubusercontent.com/devicons/devicon/master/icons/java/java-original.svg",
-  //     },
-  //     {
-  //       name: "Kotlin",
-  //       image:
-  //         "https://www.vectorlogo.zone/logos/kotlinlang/kotlinlang-icon.svg",
-  //     },
-  //     {
-  //       name: "XML",
-  //       image:
-  //         "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBMw6_RdwKQ9bDFfnKDX1iwMl4bVJEvd9PP53XuIw&s",
-  //     },
-  //     {
-  //       name: "Android Studio",
-  //       image:
-  //         "https://developer.android.com/static/studio/images/new-studio-logo-1_1920.png",
-  //     },
-  //   ],
-  // },
-  {
-    title: "Others",
-    skills: [
-      {
         name: "Git",
-        image:
-          "https://camo.githubusercontent.com/fbfcb9e3dc648adc93bef37c718db16c52f617ad055a26de6dc3c21865c3321d/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f6769742d73636d2f6769742d73636d2d69636f6e2e737667",
+        image: git,
       },
       {
         name: "GitHub",
@@ -142,176 +110,87 @@ export const skills = [
           "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
       },
       {
-        name: "Docker",
-        image:
-          "https://raw.githubusercontent.com/devicons/devicon/master/icons/docker/docker-original-wordmark.svg",
-      },
-      {
-        name: "Netlify",
-        image:
-          "https://seeklogo.com/images/N/netlify-logo-BD8F8A77E2-seeklogo.com.png",
-      },
-      {
         name: "VS Code",
-        image:
-          "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9a/Visual_Studio_Code_1.35_icon.svg/512px-Visual_Studio_Code_1.35_icon.svg.png?20210804221519",
+        image: vscode,
       },
       {
         name: "Postman",
-        image:
-          "https://camo.githubusercontent.com/93b32389bf746009ca2370de7fe06c3b5146f4c99d99df65994f9ced0ba41685/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f676574706f73746d616e2f676574706f73746d616e2d69636f6e2e737667",
+        image: postman,
       },
       {
         name: "Figma",
-        image:
-          "https://camo.githubusercontent.com/ed93c2b000a76ceaad1503e7eb9356591b885227e82a36a005b9d3498b303ba5/68747470733a2f2f7777772e766563746f726c6f676f2e7a6f6e652f6c6f676f732f6669676d612f6669676d612d69636f6e2e737667",
+        image: figma,
       },
       {
         name: "Linux",
         image: "https://pngimg.com/uploads/linux/small/linux_PNG45.png",
       },
+      {
+        name: "AWS",
+        image: aws,
+      },
     ],
   },
+  // {
+  //   title: "Others",
+  //   skills: [
+
+  //   ],
+  // },
 ];
 
 export const experiences = [
   {
     id: 0,
-    img: "https://www.zohowebstatic.com/sites/zweb/images/ogimage/zoho-logo.png",
+    img: coty,
     role: "Full Stack Developer",
-    company: "Zoho Corporation",
-    date: "Dec 2021 - July 2023",
-    desc: "Front End Development, Customer Support, API Automation, Problem-Solving, Asset Explorer Products, User Interface Enhancement, Technical Assistance, Cross-Functional Collaboration.",
+    company: "Cotyledon Technologies Pvt Ltd",
+    date: "Dec 2022 - Present",
+    desc: "Full Stack Developer, Product Development, Product Deployment and Maintenance,Problem-Solving, User Interface Enhancement, Technical Assistance, Teamwork and Collaboration.",
     skills: [
       "ReactJS",
+      "React Native",
       "JavaScript",
-      "Postman",
       "HTML",
       "CSS",
-      "Api",
-      "SQL",
-      "Java",
       "Node Js",
-      "MS SQL",
-      "Docker",
-      "Mercurial (hg)",
-    ],
-  },
-  {
-    id: 0,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSiDP6VXeRsv9Ra9ahliuPe8cq4q37l1biPOAWz5izO9g&s",
-    role: "Full Stack Developer",
-    company: "Crio.Do Careers",
-    date: "June 2023 - Present",
-    desc: "I have built many industry grade projects from scratch and am armed with many technological skills useful for tech projects.",
-    skills: [
-      "ReactJS",
-      "Redux",
-      "NodeJs",
-      "Material UI",
-      "HTML",
-      "CSS",
-      "HTTP",
-      "REST",
-      "Bootstrap",
+      "My SQL",
       "MongoDB",
-      "Git",
-      "DevOps",
-      "Linux",
+      "Material UI",
+      "REST APIs",
+      "Postman",
+      "Git Hub",
+      "AWS",
     ],
-    doc: "",
   },
-  // {
-  //   id: 1,
-  //   img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/flipr.jpeg?alt=media&token=1d72532a-45eb-4c1a-a81a-c9bed9fec543",
-  //   role: "Fullstack Externship",
-  //   company: "Flipr",
-  //   date: "June 2023 - July 2023",
-  //   desc: "Built an employee management full stack web app used Docker and deployed on AWS ec2. I was the top performer in the program.",
-  //   skills: [
-  //     "ReactJS",
-  //     "Redux",
-  //     "NodeJs",
-  //     "Material UI",
-  //     "HTML",
-  //     "CSS",
-  //     "JavaScript",
-  //     "Docker",
-  //     "AWS",
-  //     "MongoDB",
-  //   ],
-  // },
-  // {
-  //   id: 2,
-  //   img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/girlScript.jpeg?alt=media&token=e656a621-cf3c-4230-bf0f-e74b4cec6035",
-  //   role: "Open Source Contributor ",
-  //   company: "GirlScript Summer of Code",
-  //   date: "May 2023 - Present",
-  //   desc: "Contributing to different open-source projects and learn from industry experts",
-  //   doc: "https://media.licdn.com/dms/image/D4D22AQGzSpgFaR4hsQ/feedshare-shrink_800/0/1684079632872?e=1687996800&v=beta&t=i0xWn_k32Oj9SxKfc6rARSbOghXD9Ge6WyEb2p2vvrc",
-  // },
-  // {
-  //   id: 3,
-  //   img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/gdsc.jpeg?alt=media&token=c162329c-efaa-4be8-a173-8d3f4c48ea70",
-  //   role: "Android Developer",
-  //   company: "DSC KIIT",
-  //   date: "Nov2021 - Present",
-  //   desc: "As an Android developer at the Google Developers Student Club (GDCS), I have had the opportunity to work on exciting projects and collaborate with talented developers who share my passion for technology. Through my involvement with GDCS, I have also had the opportunity to host and participate in numerous events, including hackathons, study jams, and workshops.",
-  //   skills: [
-  //     "Leadership",
-  //     "Mobile Application Development",
-  //     "Kotlin",
-  //     "XML",
-  //     "Figma",
-  //   ],
-  // },
-  // {
-  //   id: 4,
-  //   img: "https://firebasestorage.googleapis.com/v0/b/flexi-coding.appspot.com/o/Rudraksha.jpeg?alt=media&token=8f83f41e-d0a1-486f-9c7f-dd4cd1d09e8d",
-  //   role: "Android Developer Intern",
-  //   company: "Rudraksha Welffare Foundation",
-  //   date: "June 2021 - Oct 2021",
-  //   desc: "As an Android Developer Intern at Rudraksha Welfare Foundation from June 2021 to October 2021, I gained valuable hands-on experience in application development. During my tenure, I contributed to the development of the application's back-end cloud functions using Firebase and implemented a front-end with the MVVM structure, which was designed using Figma. I also added a one-to-one video call feature, conceptualized new features, and optimized app performance. This internship helped me enhance my skills in Android development and gave me an opportunity to work in a collaborative team environment.",
-  //   skills: [
-  //     "Android",
-  //     "Java",
-  //     "Kotlin",
-  //     "XML",
-  //     "Node Js",
-  //     "Cloud Firestore",
-  //     "Firebase",
-  //     "Figma",
-  //   ],
-  //   doc: "https://firebasestorage.googleapis.com/v0/b/buckoid-917cf.appspot.com/o/WhatsApp%20Image%202023-05-05%20at%2012.07.39%20AM.jpeg?alt=media&token=9f0e1648-568b-422d-bd0b-1f125f722245",
-  // },
 ];
 
 export const education = [
   {
     id: 0,
-    img: "https://karunya.edu/sites/default/files/img/home/KITS-EMBLEM.png.pagespeed.ce.hVclQGVmrR.png",
-    school: "Karunya Institute of Technology and Sciences (Deemed University)",
-    date: "july 2019 - may 2022",
-    grade: "8.3 CGPA",
-    desc: "Successfully attained a Bachelor of Technology degree specializing in Civil Engineering from Karunya University.",
-    degree: "Bachelor of Technology - BTech, Civil Engineering",
+    img: jpr,
+    school: "JEPPIAAR SRR ENGINEERING COLLEGE",
+    date: "August 2018 - July 2022",
+    grade: "7.3 CGPA",
+    desc: "Successfully obtained a Bachelor of Technology degree specializing in Information Technology from Jeppiaar SRR Engineering College.",
+    degree: "Bachelor of Technology - BTech, Information Technology",
   },
   {
     id: 1,
-    img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSFIAokUHSjUfW3ylZIRONNouBgV9TbtcrnuyQiBpWx-w&s",
-    school: "MSP Velayutha Nadar Lakshmithaiammal Polytechnic College",
-    date: "june 2016 - Apr 2019",
-    grade: "95.5%",
-    desc: "Graduated with a diploma in civil engineering from MSP Velayutha Nadar Lakshmithaiammal Polytechnic College",
-    degree: "Diploma in civil engineering",
+    img: school,
+    school: "Jawahar Matriculation Higher Secondary School",
+    date: "June 2017 - March 2018",
+    grade: "54%",
+    desc: "I completed my class 12 education at Jawahar Matriculation Higher Secondary School",
+    degree: "XII",
   },
   {
     id: 2,
-    img: "https://yt3.googleusercontent.com/bBFOiRb-wgQlxdF8ZVC_0fzb5JNlLN3GIiK9ZF3gnGH17jFdiG1TTGNo-AsGO7c0hs5qNlKOKw=s900-c-k-c0x00ffffff-no-rj",
-    school: "Spectrum Matric Higher Secondary Schoo",
-    date: "Apr 2011 - Apr 2016",
-    grade: "80.3%",
-    desc: "I completed my class 10 education at Spectrum Matric Higher Secondary School.",
+    img: school,
+    school: "Jawahar Matriculation Higher Secondary School",
+    date: "June 2015 - March 2016",
+    grade: "73.2%",
+    desc: "I completed my class 10 education at Jawahar Matriculation Higher Secondary School",
     degree: "X",
   },
 ];
@@ -319,215 +198,134 @@ export const education = [
 export const projects = [
   {
     id: 1,
-    title: "Qkart Shopping",
-    date: "Oct 2023",
+    title: "Pick Your Slot",
+    date: "Jan 2023",
     description:
-      "QKart is an e-commerce application offering a variety of products for customers to choose from. During the course of this project, Implemented the core logic for authentication, shopping cart and checkout Improved UI by adding responsive design elements for uniform experience across different devices. Utilized REST APIs to dynamically load and render data served by the backend server.",
-    image:
-      "https://raw.githubusercontent.com/arumugarajajo/images/main/qkart1.png",
+      "PickYourSlot is a mobile application for slot booking, offering over 100+ services for users to choose from. During the course of this project, I implemented the core logic for authentication, slot selection, and checkout. I improved the UI by adding responsive design elements for a uniform experience across different devices. Additionally, I utilized REST APIs to dynamically load and render data served by the backend server.",
+    image: PYS_C,
     tags: [
-      "React Js",
+      "React Native",
       "JavaScript",
-      "React Router",
-      "Material UI",
-      "Responsive Design",
-      "localStorage",
+      "Redux",
       "React Hooks",
-      "Node Js",
-      "Material UI Grid",
-      "Netlify",
-      "Deployment",
+      "Navigation",
+      "Razor Pay",
+      "REST APIs",
+      "Android & iOS",
+      "UI/UX Design",
     ],
-    category: "web app",
-    github:
-      "https://github.com/arumugarajajo/arumugarajajo-ME_QKART_FRONTEND_V2",
-    webapp: "https://arumugarajajo-me-qkart-frontend-v2-98mvxov4p.vercel.app/",
+    category: "android app",
+    github: "",
+    webapp: "https://play.google.com/store/apps/details?id=com.pyscustomer",
   },
 
   {
     id: 0,
-    title: "Music-QTify",
-    date: "Nov 2023 - 1 day",
+    title: "PYS Partner",
+    date: "Jan 2023",
     description:
-      "Developed a full-stack web application that allows users to search for, play, and pause their favorite podcasts on demand and create podcasts. Implemented user authentication using Google Auth and Jwt Auth, made responsive user interface with React JS that provides users with a seamless experience across all devices. Practiced agile methodologies to optimize team efficiency and communication.",
-    image:
-      "https://raw.githubusercontent.com/arumugarajajo/images/main/music2.png",
+      "PYS Partner is a comprehensive mobile application designed for vendors, allowing shop owners to efficiently manage their bookings, track payments, and access booking details. It enables vendors to easily create and manage slots, providing flexibility for their customers. With additional features like real-time booking availability and instant notifications, PYS Partner streamlines the vendor's workflow and enhances customer service.",
+    image: PYS_V,
     tags: [
-      "React Js",
+      "React Native",
       "JavaScript",
-      "Keyword Search",
-      "Material UI",
-      "Responsive Design",
-      "Material UI Grid",
-      "Netlify",
-      "Deployment",
+      "Redux",
+      "React Hooks",
+      "Navigation",
+      "API Integration",
+      "Android & iOS",
+      "UI/UX Design",
     ],
-    category: "web app",
-    github: "https://github.com/arumugarajajo/Qtify-music",
-    webapp: "https://musicqtify.netlify.app/",
-    // member: [
-    //   {
-    //     name: "arumugaraja",
-    //     img: "https://avatars.githubusercontent.com/u/64485885?v=4",
-    //     linkedin: "https://www.linkedin.com/in/arumugaraja-b89a791b3/",
-    //     github: "https://github.com/arumugaraja/",
-    //   },
-    //   {
-    //     name: "Upasana Chaudhuri",
-    //     img: "https://avatars.githubusercontent.com/u/100614635?v=4",
-    //     linkedin: "https://www.linkedin.com/in/upasana-chaudhuri-2a2bb5231/",
-    //     github: "https://github.com/upasana0710",
-    //   },
-    // ],
+    category: "android app",
+    github: "",
+    webapp: "https://play.google.com/store/apps/details?id=com.pysadmin",
   },
   {
     id: 9,
-    title: "IGSTUDIO",
-    date: "DEC-2023",
+    title: "Pick Your Slot (web)",
+    date: "Jan 2023",
     description:
-      "Trackify is a web application designed to streamline task management and enhance productivity in the workplace. It provides a user-friendly interface for employers to keep track of their employees' daily work activities and empowers employees to log their tasks efficiently. \nAdmin Credentials: # Email: testadmin@gmail.com #Password- 123@testadmin, Employee Credentials:	#Email: testemployee@gmail.com	#Password- 123@Testemployee",
-    image:
-      "https://raw.githubusercontent.com/arumugarajajo/images/main/igimg.png",
+      "A comprehensive full-stack web application has been developed, facilitating multi-level access for various roles including Super Admin, Vendor, Manager, Marketing, Finance, Staff, and Support. The Super Admin holds paramount authority within the application, enabling them to create vendor accounts and oversee all vendor bookings and payments. Both the Super Admin and vendors possess the capability to create and manage time slots, with the Super Admin retaining exclusive privileges to initiate payments for vendor transactions from the previous day. This application streamlines administrative processes, ensuring efficient management of bookings, payments, and user access across different organizational roles.",
+    image: pys_w,
     tags: [
-      "React Js",
-      "Material UI",
       "JavaScript",
+      "React Js",
+      "React Router",
+      "React Hooks",
+      "Material UI",
+      "Bootstrap",
       "Responsive Design",
-      "HTML",
-      "CSS",
-      "UI/UX Design",
-      "Netlify",
       "Deployment",
+      "AWS",
     ],
     category: "web app",
-    github: "https://github.com/arumugarajajo/IGSTUDIO",
-    webapp: "https://igstudios.netlify.app/",
+    github: "",
+    webapp: "http://13.232.184.195:3001/",
   },
 
   {
     id: 2,
-    title: "Coincap",
-    date: "Dec 2023",
+    title: "Airbuzz",
+    date: "Oct 2023",
     description:
-      "CoinCap is a cryptocurrency market tracking platform that provides real-time information about various cryptocurrencies, including their prices, market capitalization, volume, historical data, and trends..",
-    image:
-      "https://raw.githubusercontent.com/arumugarajajo/images/main/coincap.png",
+      "Airbuzz is a cutting-edge content management project (CMS) designed to offer unparalleled flexibility and customization. Every element, including buttons, text, images, videos, and documents, is fully editable and subject to change, empowering users to adapt and evolve their content seamlessly. Built with React.js, along with hooks, routers, MUI, Bootstrap, Node.js, Express.js, and MySQL for the database, this dynamic site epitomizes modern web development practices. Its user-friendly interface enables clients to effortlessly track their shipments, enhancing their overall experience and satisfaction.",
+    image: airbuzz,
     tags: [
-      "ReactJS",
-      "JavaScript (ES6+)",
-      "API",
-      "Data Visualization",
-      "Routing",
+      "JavaScript",
+      "React Js",
+      "React Hooks",
+      "React Router",
+      "Material UI",
+      "REST Api's",
+      "Responsive Design",
+      "Node Js",
+      "Express Js",
+      "My SQL",
+      "Deployment AWS",
       "UI/UX Design",
-      "Testing",
     ],
     category: "web app",
-    github: "https://github.com/arumugarajajo/coincap-ui",
-    webapp: "https://coincap-ui.netlify.app/",
+    github: "",
+    webapp: "https://airbuzzintl.com/",
   },
   {
     id: 3,
-    title: "QTripDynamic",
-    date: "Aug 2023",
+    title: "Sri Rayar",
+    date: "Jan 2023",
     description:
-      "QTrip is a travel website aimed at travellers looking for a multitude of adventures in different cities.",
+      "Sri Rayar, a course management system similar to Besant and Greens, enables administrators to effortlessly create courses and organizations. It facilitates seamless mapping of trainers and trainees to these entities, allowing efficient tracking of attendance and assessments. Utilizing modern web development practices, Sri Rayar is built with React.js, hooks, routers, MUI, Bootstrap, Node.js, Express.js, and MySQL, prioritizing user-friendly interfaces, code reusability, and component-based architecture for a streamlined experience.",
     image:
       "https://raw.githubusercontent.com/arumugarajajo/images/main/dy1.png",
     tags: [
-      "ReactJS",
       "JavaScript",
-      "Bootstrap Carouse",
-      "Event Handling",
-      "localStorage",
-      "Conditional Rendering",
-      "Netlify",
-      "Heroku",
-      "Deployment",
-      "Netlify CLI",
+      "React Js",
+      "React Hooks",
+      "React Router",
+      "Material UI",
+      "REST Api's",
       "Responsive Design",
-      "Bootstrap",
+      "Node Js",
+      "Express Js",
+      "My SQL",
+      "AWS",
+      "UI/UX Design",
     ],
-    category: ["web app,android app"],
-    github: "https://github.com/arumugarajajo/arumugarajajo-ME_QTRIPDYNAMIC",
-    webapp: "https://resonant-gaufre-680b65.netlify.app/",
-  },
-  {
-    id: 10,
-    title: "QTripStatic",
-    date: "Aug 2023",
-    description:
-      "QTrip is a travel website aimed at travellers looking for a multitude of adventures in different cities. During the course of this project, Created 3 different web pages from Wireframe layout using HTML and CSS Utilized Bootstrap extensively for responsive design Deployed the website to Netlify/Vercel.",
-    image:
-      "https://raw.githubusercontent.com/arumugarajajo/images/main/qtrip-st.png",
-    tags: ["React Native", "JavaScript", "Axios"],
     category: "web app",
-    github: "https://github.com/arumugarajajo/arumugarajajo-ME_QTRIPDYNAMIC",
-    webapp: "https://qtrip-static-arumugaraja.netlify.app/",
+    github: "",
+    webapp: "#",
   },
   // {
-  //   id: 4,
-  //   title: "Whatsapp Clone",
-  //   date: "Jul 2021",
+  //   id: 10,
+  //   title: "QTripStatic",
+  //   date: "Aug 2023",
   //   description:
-  //     "A WhatsApp clone made with React JS, Firebase, and Material UI. It has Phone Authentication, Real-time Database. It has a chat room where users can chat with each other. It has a sidebar where users can see all the chat rooms and can create a new chat room. It has a login page where users can log in with their Google account.",
+  //     "QTrip is a travel website aimed at travellers looking for a multitude of adventures in different cities. During the course of this project, Created 3 different web pages from Wireframe layout using HTML and CSS Utilized Bootstrap extensively for responsive design Deployed the website to Netlify/Vercel.",
   //   image:
-  //     "https://firebasestorage.googleapis.com/v0/b/whatsapp-clone-arumugaraja.appspot.com/o/Screenshot%20(151).png?alt=media&token=48391593-1ef0-4a8c-a92a-eb82bdf38e89",
-  //   tags: ["React Js", "Firebase", "Firestore", "Node JS"],
+  //     "https://raw.githubusercontent.com/arumugarajajo/images/main/qtrip-st.png",
+  //   tags: ["React Native", "JavaScript", "Axios"],
   //   category: "web app",
-  //   github: "https://github.com/arumugaraja/Whatsapp-Clone-React-Js",
-  //   webapp: "https://whatsapp-clone-arumugaraja.web.app",
-  // },
-  // {
-  //   id: 5,
-  //   title: "Todo Web App",
-  //   date: "Jun 2021",
-  //   description:
-  //     " A Todo Web App made with React JS, Redux, and Material UI. It has a login page where users can log in with their Google account. It has a sidebar where users can see all the tasks and can create a new task. It has a calendar where users can see all the tasks on a particular date. It has a search bar where users can search for a particular task.",
-  //   image:
-  //     "https://camo.githubusercontent.com/a328255ad96f861f57d25096d28018ab2656c689a1456b0d145764009bed2d1a/68747470733a2f2f666972656261736573746f726167652e676f6f676c65617069732e636f6d2f76302f622f746f646f2d6170702d63386331392e61707073706f742e636f6d2f6f2f53637265656e73686f74253230283938292e706e673f616c743d6d6564696126746f6b656e3d33643335646366322d626666322d343730382d393031632d343232383866383332386633",
-  //   tags: ["React Js", "Local Storage", "AWS Auth", "Node JS"],
-  //   category: "web app",
-  //   github: "https://github.com/arumugaraja/Todo-Web-App",
-  //   webapp: "https://arumugaraja-react-todo.netlify.app/",
-  // },
-  // {
-  //   id: 6,
-  //   title: "Breaking Bad",
-  //   date: "Jun 2021",
-  //   description:
-  //     "A simple react app that shows the characters of the famous TV series Breaking Bad. It uses the Breaking Bad API to fetch the data. It also has a search bar to search for a particular character.",
-  //   image:
-  //     "https://camo.githubusercontent.com/cd07010cbeb90cb1b43a5d6162784326aef02210ef7d41a0f9ae043b3e392378/68747470733a2f2f666972656261736573746f726167652e676f6f676c65617069732e636f6d2f76302f622f746f646f2d6170702d63386331392e61707073706f742e636f6d2f6f2f53637265656e73686f7425323028313534292e706e673f616c743d6d6564696126746f6b656e3d65613439383630632d303435362d343333342d616435372d336239346663303333363263",
-  //   tags: ["React Js", "API", "Axios", "Node JS"],
-  //   category: "web app",
-  //   github: "https://github.com/arumugaraja/Breaking-Bad",
-  //   webapp: "https://breaking-bad-webapp.netlify.app",
-  // },
-  // {
-  //   id: 7,
-  //   title: "Quiz App",
-  //   date: "Dec 2020 - Jan 2021",
-  //   description:
-  //     "A android quiz app made with Java and Firebase. It has a login page where users can log in with their Google account. It has a sidebar where users can see all the quiz categories and can create a new quiz. It has a leaderboard where users can see the top 10 scorers. It has a search bar where users can search for a particular quiz.",
-  //   image:
-  //     "https://github-production-user-asset-6210df.s3.amazonaws.com/64485885/239726262-c1b061d1-d9d0-42ef-9f1c-0412d14bc4f6.gif",
-  //   tags: ["Java", "Android Studio", "Firebase", "Google Auth"],
-  //   category: "android app",
-  //   github: "https://github.com/arumugaraja/Quiz-Earn",
-  //   webapp: "https://github.com/arumugaraja/Quiz-Earn",
-  // },
-  // {
-  //   id: 8,
-  //   title: "Face Recognition",
-  //   date: "Jan 2021",
-  //   description:
-  //     "A Face recognition python app made with OpenCV. It uses face_recognition library to detect faces. It uses the webcam to detect faces. It also has a search bar to search for a particular face.",
-  //   image:
-  //     "https://camo.githubusercontent.com/a8b3e1ebf26d4c95f75bc6671189a3590eb67eb8332d7c7452492990e731efb9/68747470733a2f2f77617265686f7573652d63616d6f2e696e67726573732e636d68312e707366686f737465642e6f72672f356137383335396561323762643261633232336437656662306639303831306437373930383436312f363837343734373037333361326632663633366336663735363432653637363937343638373536323735373336353732363336663665373436353665373432653633366636643266363137333733363537343733326633383339333633363339333232663332333433343333333033333339333832663333333636363330363533333636333032643331333336333632326433313331363533373264333833323335333832643334363433303633333936333635333136353334333133393265363736393636",
-  //   tags: ["Python", "Keras", "TensorFlow", "VGG16", "Pickle", "React"],
-  //   category: "machine learning",
-  //   github: "https://github.com/arumugaraja/Face-Recodnition-AI-with-Python",
-  //   webapp: "https://github.com/arumugaraja/Face-Recodnition-AI-with-Python",
+  //   github: "https://github.com/arumugarajajo/arumugarajajo-ME_QTRIPDYNAMIC",
+  //   webapp: "https://qtrip-static-arumugaraja.netlify.app/",
   // },
 ];
 

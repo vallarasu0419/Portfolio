@@ -13,6 +13,7 @@ import Experience from "./components/Experience";
 import Education from "./components/Education";
 import ProjectDetails from "./components/ProjectDetails";
 import styled from "styled-components";
+import { Parallax, ParallaxProvider } from "react-scroll-parallax";
 
 const Body = styled.div`
   background-color: ${({ theme }) => theme.bg};
@@ -40,25 +41,45 @@ function App() {
   console.log(openModal);
   return (
     <ThemeProvider theme={darkTheme}>
-      <Router>
-        <Navbar />
-        <Body>
-          <HeroSection />
-          <Wrapper>
-            <Skills />
-            <Experience />
-          </Wrapper>
-          <Projects openModal={openModal} setOpenModal={setOpenModal} />
-          <Wrapper>
-            <Education />
-            <Contact />
-          </Wrapper>
-          <Footer />
-          {openModal.state && (
-            <ProjectDetails openModal={openModal} setOpenModal={setOpenModal} />
-          )}
-        </Body>
-      </Router>
+      <ParallaxProvider>
+        <Router>
+          <Navbar />
+          <Body>
+            <HeroSection />
+            <Wrapper>
+              {/* <Parallax
+                translateY={["-100000px", "100000px"]}
+                translateX={["0", "0"]}
+                style={{ marginLeft: "auto", marginRight: "auto" }}
+              > */}
+              <Skills />
+              {/* </Parallax> */}
+              <Experience />
+            </Wrapper>
+            {/* <Wrapper>
+              <Parallax
+                translateY={["-100000px", "100000px"]}
+                translateX={["0", "0"]}
+                style={{ marginLeft: "auto", marginRight: "auto" }}
+              >
+              <Experience />
+              </Parallax>
+            </Wrapper> */}
+            <Projects openModal={openModal} setOpenModal={setOpenModal} />
+            <Wrapper>
+              <Education />
+              <Contact />
+            </Wrapper>
+            <Footer />
+            {openModal.state && (
+              <ProjectDetails
+                openModal={openModal}
+                setOpenModal={setOpenModal}
+              />
+            )}
+          </Body>
+        </Router>
+      </ParallaxProvider>
     </ThemeProvider>
   );
 }
