@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
-import { FiExternalLink, FiGithub, FiLayers } from 'react-icons/fi';
+import { FiExternalLink,  FiLayers } from 'react-icons/fi';
 
 const projects = [
   {
