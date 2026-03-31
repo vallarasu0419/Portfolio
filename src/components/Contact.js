@@ -134,7 +134,7 @@ const Contact = () => {
           transition={{ duration: 0.7 }}
           className="section-header"
         >
-          <span className="section-label">// Get In Touch</span>
+          <span className="section-label">{`// Get In Touch`}</span>
           <h2 className="section-title">
             Let's Work <span>Together</span>
           </h2>
