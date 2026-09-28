@@ -13,23 +13,26 @@ Open [http://localhost:3000](http://localhost:3000) to view in browser.
 
 ## Features
 
+- All content lives in `src/data/portfolio.js` (single source of truth; keep in sync with resume/LinkedIn)
 - Dark / Light theme toggle with CSS variables
 - Smooth scroll navigation with active section highlighting
-- Typing animation in hero section
-- Animated skill progress bars with category filtering
-- Interactive timeline for work experience
-- Project cards with tech stack tags and live links
-- Contact form (mailto-based)
-- Downloadable resume button
-- Particle background animation
-- Fully responsive (mobile, tablet, desktop)
-- SEO-friendly meta tags
+- Experience timeline and case-study project cards with live links
+- Grouped skill chips
+- Contact form via EmailJS (see `.env.example`)
+- Resume download from hero, navbar and contact
+- Particle background (disabled for `prefers-reduced-motion`)
+- Fully responsive, keyboard accessible, WCAG 2.2 AA colour contrast
+- SEO: meta description, canonical, Open Graph / Twitter image, JSON-LD, sitemap
+
+## Environment variables
+
+Copy `.env.example` to `.env.local` and fill in the EmailJS IDs. Add the same
+variables in Vercel → Project → Settings → Environment Variables.
 
 ## Tech Stack
 
 - React 18
 - Framer Motion (animations)
-- React Type Animation (typed text)
 - React Scroll (smooth scrolling)
 - React Icons (Feather icons)
 - React Intersection Observer (scroll reveals)
@@ -44,13 +47,9 @@ All colors and spacing are controlled via CSS variables in `src/index.css`. Edit
 npm run build
 ```
 
-## Deploy to GitHub Pages
+## Deploy
 
-1. Install gh-pages: `npm install --save-dev gh-pages`
-2. Add to package.json:
-   - `"homepage": "https://vallarasu0419.github.io/Portfolio/"`
-   - Scripts: `"predeploy": "npm run build"`, `"deploy": "gh-pages -d build"`
-3. Run: `npm run deploy`
+Deployed on Vercel at https://vikkaraman.vercel.app/.
 
 ## License
 

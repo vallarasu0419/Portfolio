@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Loader from './components/Loader';
+import { MotionConfig } from 'framer-motion';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import About from './components/About';
@@ -11,45 +11,51 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import ParticleBackground from './components/ParticleBackground';
 
+const readSavedTheme = () => {
+  try {
+    return localStorage.getItem('portfolio-theme');
+  } catch {
+    return null;
+  }
+};
+
 function App() {
-  const [theme, setTheme] = useState('dark');
-  const [loading, setLoading] = useState(true);
+  const [theme, setTheme] = useState(() => readSavedTheme() || 'dark');
 
   useEffect(() => {
-    const saved = localStorage.getItem('portfolio-theme');
-    if (saved) {
-      setTheme(saved);
-      document.documentElement.setAttribute('data-theme', saved);
-    }
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2200);
-    return () => clearTimeout(timer);
-  }, []);
+    document.documentElement.setAttribute('data-theme', theme);
+  }, [theme]);
 
   const toggleTheme = () => {
     const next = theme === 'dark' ? 'light' : 'dark';
     setTheme(next);
-    document.documentElement.setAttribute('data-theme', next);
-    localStorage.setItem('portfolio-theme', next);
+    try {
+      localStorage.setItem('portfolio-theme', next);
+    } catch {
+      // storage unavailable (private mode) — theme still applies for this visit
+    }
   };
 
-  if (loading) return <Loader />;
-
   return (
-    <div className="app">
-      <ParticleBackground />
-      <Navbar theme={theme} toggleTheme={toggleTheme} />
-      <Hero />
-      <About />
-      <Skills />
-      <Experience />
-      <Projects />
-      <Education />
-      <Contact />
-      <Footer />
-    </div>
+    <MotionConfig reducedMotion="user">
+      <div className="app">
+        <a href="#main" className="skip-link">
+          Skip to main content
+        </a>
+        <ParticleBackground />
+        <Navbar theme={theme} toggleTheme={toggleTheme} />
+        <main id="main" tabIndex={-1}>
+          <Hero />
+          <About />
+          <Experience />
+          <Projects />
+          <Skills />
+          <Education />
+          <Contact />
+        </main>
+        <Footer />
+      </div>
+    </MotionConfig>
   );
 }
 

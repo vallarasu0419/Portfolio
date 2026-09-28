@@ -1,7 +1,11 @@
 {
-  "short_name": "Vikkaraman",
-  "name": "Vikkaraman Portfolio",
-  "icons": [],
+  "short_name": "Vikkaraman V",
+  "name": "Vikkaraman V – Full Stack Developer",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" },
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#0a0a0f",

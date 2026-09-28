@@ -4,6 +4,9 @@ const ParticleBackground = () => {
   const canvasRef = useRef(null);
 
   useEffect(() => {
+    // Decorative only — skip entirely for users who prefer reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
     const canvas = canvasRef.current;
     const ctx = canvas.getContext('2d');
     let animationId;
@@ -16,7 +19,8 @@ const ParticleBackground = () => {
 
     const createParticles = () => {
       particles = [];
-      const count = Math.floor((canvas.width * canvas.height) / 18000);
+      // Cap the count so the O(n²) connection pass stays cheap on large screens
+      const count = Math.min(80, Math.floor((canvas.width * canvas.height) / 18000));
       for (let i = 0; i < count; i++) {
         particles.push({
           x: Math.random() * canvas.width,
@@ -67,24 +71,27 @@ const ParticleBackground = () => {
       animationId = requestAnimationFrame(animate);
     };
 
+    const onResize = () => {
+      resize();
+      createParticles();
+    };
+
     resize();
     createParticles();
     animate();
 
-    window.addEventListener('resize', () => {
-      resize();
-      createParticles();
-    });
+    window.addEventListener('resize', onResize);
 
     return () => {
       cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', resize);
+      window.removeEventListener('resize', onResize);
     };
   }, []);
 
   return (
     <canvas
       ref={canvasRef}
+      aria-hidden="true"
       style={{
         position: 'fixed',
         top: 0,

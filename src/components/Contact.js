@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import {
@@ -9,39 +9,55 @@ import {
   FiDownload,
   FiCheck,
   FiAlertCircle,
+  FiLinkedin,
+  FiGithub,
 } from "react-icons/fi";
+import { profile } from "../data/portfolio";
 
 // ============================================================
 // EMAILJS CREDENTIALS
 // ============================================================
-// SERVICE_ID  → EmailJS Dashboard → "Email Services" → copy the ID shown on your Gmail card
-// TEMPLATE_ID → EmailJS Dashboard → "Email Templates" → create template → copy the ID at top
-// PUBLIC_KEY  → EmailJS Dashboard → "Account" → copy the "Public Key" value
+// Set these in .env.local (local) and in Vercel → Project → Settings →
+// Environment Variables. See .env.example. The fallbacks keep the current
+// deployment working until the Vercel variables are added.
+// EmailJS public keys are designed to be used in the browser; restrict the
+// allowed origins in the EmailJS dashboard to stop reuse on other sites.
 // ============================================================
-const EMAILJS_SERVICE_ID = "service_0hpr7lw";
-const EMAILJS_TEMPLATE_ID = "template_puk85rj"; // ← Get from Email Templates page
-const EMAILJS_PUBLIC_KEY = "o6W5h-LtwtkLilpPK"; // ← Get from Account page
+const EMAILJS_SERVICE_ID = process.env.REACT_APP_EMAILJS_SERVICE_ID || "service_0hpr7lw";
+const EMAILJS_TEMPLATE_ID = process.env.REACT_APP_EMAILJS_TEMPLATE_ID || "template_puk85rj";
+const EMAILJS_PUBLIC_KEY = process.env.REACT_APP_EMAILJS_PUBLIC_KEY || "o6W5h-LtwtkLilpPK";
 
 const contactInfo = [
+  { icon: <FiMail />, label: "Email", value: profile.email, href: `mailto:${profile.email}` },
+  { icon: <FiPhone />, label: "Phone", value: profile.phone, href: profile.phoneHref },
   {
-    icon: <FiMail />,
-    label: "Email",
-    value: "vallarasu0410@gmail.com",
-    href: "mailto:vallarasu0410@gmail.com",
+    icon: <FiLinkedin />,
+    label: "LinkedIn",
+    value: "vikkaraman-v",
+    href: profile.links.linkedin,
+    external: true,
   },
   {
-    icon: <FiPhone />,
-    label: "Phone",
-    value: "+91 6383797129",
-    href: "tel:+916383797129",
+    icon: <FiGithub />,
+    label: "GitHub",
+    value: "vallarasu0419",
+    href: profile.links.github,
+    external: true,
   },
-  {
-    icon: <FiMapPin />,
-    label: "Location",
-    value: "Ekkaduthangal, Chennai, Tamil Nadu",
-    href: null,
-  },
+  { icon: <FiMapPin />, label: "Location", value: profile.location, href: null },
 ];
+
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+const labelStyle = {
+  fontFamily: "var(--font-mono)",
+  fontSize: "0.75rem",
+  color: "var(--text-secondary)",
+  letterSpacing: "1px",
+  textTransform: "uppercase",
+  marginBottom: "6px",
+  display: "block",
+};
 
 const Contact = () => {
   const [ref, inView] = useInView({ threshold: 0.15, triggerOnce: true });
@@ -53,7 +69,6 @@ const Contact = () => {
   });
   const [status, setStatus] = useState("idle");
   const [errorMsg, setErrorMsg] = useState("");
-  const formRef = useRef();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -64,8 +79,12 @@ const Contact = () => {
 
     if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
       setStatus("error");
-      setErrorMsg("Please fill in all required fields.");
-      setTimeout(() => setStatus("idle"), 3000);
+      setErrorMsg("Please fill in your name, email and message.");
+      return;
+    }
+    if (!EMAIL_PATTERN.test(form.email.trim())) {
+      setStatus("error");
+      setErrorMsg("Please enter a valid email address.");
       return;
     }
 
@@ -89,43 +108,40 @@ const Contact = () => {
         from_email: form.email,
         subject: form.subject || "Portfolio Contact",
         message: form.message,
-        to_email: "vallarasu0410@gmail.com",
+        to_email: profile.email,
       });
 
       setStatus("success");
       setForm({ name: "", email: "", subject: "", message: "" });
-      setTimeout(() => setStatus("idle"), 5000);
     } catch (error) {
       console.error("EmailJS Error:", error);
       setStatus("error");
-      setErrorMsg("Failed to send. Please try again or email me directly.");
-      setTimeout(() => setStatus("idle"), 5000);
+      setErrorMsg(`Failed to send. Please try again or email me at ${profile.email}.`);
     }
   };
 
+  const sending = status === "sending";
+
   const inputStyle = {
     width: "100%",
-    padding: "14px 18px",
+    minHeight: "44px",
+    padding: "12px 16px",
     borderRadius: "var(--radius-md)",
-    border: "1px solid var(--border)",
+    border: "1px solid var(--border-strong)",
     background: "var(--bg-tertiary)",
     color: "var(--text-primary)",
     fontFamily: "var(--font-body)",
-    fontSize: "0.9rem",
-    outline: "none",
-    transition: "all 0.3s ease",
+    fontSize: "1rem",
+    transition: "border-color 0.3s ease",
+    opacity: sending ? 0.6 : 1,
   };
-
-  // Google Drive direct download link (converted from your sharing link)
-  const resumeURL =
-    "https://drive.google.com/uc?export=download&id=1hHWmzg575Y3PeL8ai5eY3GyWjPcXkCCM";
 
   return (
     <section
       id="contact"
       className="section"
       ref={ref}
-      style={{ background: "var(--bg-secondary)" }}
+      aria-labelledby="contact-heading"
     >
       <div className="container">
         <motion.div
@@ -135,21 +151,20 @@ const Contact = () => {
           className="section-header"
         >
           <span className="section-label">{`// Get In Touch`}</span>
-          <h2 className="section-title">
+          <h2 id="contact-heading" className="section-title">
             Let's Work <span>Together</span>
           </h2>
           <p className="section-subtitle">
-            Have a project in mind or want to discuss opportunities? I'd love to
-            hear from you.
+            {profile.availability}. The fastest way to reach me is email or LinkedIn.
           </p>
         </motion.div>
 
         <div
           style={{
             display: "grid",
-            gridTemplateColumns: "1fr 1.4fr",
+            gridTemplateColumns: "1fr 1.3fr",
             gap: "48px",
-            maxWidth: "960px",
+            maxWidth: "980px",
             margin: "0 auto",
           }}
           className="contact-grid"
@@ -160,22 +175,20 @@ const Contact = () => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <div style={{ marginBottom: "32px" }}>
-              {contactInfo.map((c, i) => (
-                <motion.div
+            <ul style={{ marginBottom: "28px", listStyle: "none" }}>
+              {contactInfo.map((c) => (
+                <li
                   key={c.label}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
-                  transition={{ delay: 0.3 + i * 0.1 }}
                   style={{
                     display: "flex",
                     alignItems: "center",
                     gap: "16px",
-                    padding: "16px 0",
+                    padding: "14px 0",
                     borderBottom: "1px solid var(--border)",
                   }}
                 >
                   <div
+                    aria-hidden="true"
                     style={{
                       width: "44px",
                       height: "44px",
@@ -191,7 +204,7 @@ const Contact = () => {
                   >
                     {c.icon}
                   </div>
-                  <div>
+                  <div style={{ minWidth: 0 }}>
                     <p
                       style={{
                         fontFamily: "var(--font-mono)",
@@ -207,59 +220,38 @@ const Contact = () => {
                     {c.href ? (
                       <a
                         href={c.href}
+                        {...(c.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                         style={{
-                          fontSize: "0.92rem",
+                          fontSize: "0.95rem",
                           color: "var(--text-primary)",
                           fontWeight: 500,
+                          overflowWrap: "anywhere",
                         }}
                       >
                         {c.value}
+                        {c.external && <span className="visually-hidden"> (opens in a new tab)</span>}
                       </a>
                     ) : (
-                      <p
-                        style={{
-                          fontSize: "0.92rem",
-                          color: "var(--text-primary)",
-                          fontWeight: 500,
-                        }}
-                      >
+                      <p style={{ fontSize: "0.95rem", color: "var(--text-primary)", fontWeight: 500 }}>
                         {c.value}
                       </p>
                     )}
                   </div>
-                </motion.div>
+                </li>
               ))}
-            </div>
+            </ul>
 
-            {/* Download Resume Button — opens Google Drive direct download */}
-            <motion.a
-              href={resumeURL}
+            <a
+              href={profile.resumeUrl}
+              download={profile.resumeFileName}
               target="_blank"
               rel="noopener noreferrer"
-              whileHover={{
-                scale: 1.03,
-                boxShadow: "0 0 30px rgba(249,115,22,0.2)",
-              }}
-              whileTap={{ scale: 0.97 }}
-              style={{
-                display: "inline-flex",
-                alignItems: "center",
-                gap: "10px",
-                padding: "14px 28px",
-                borderRadius: "var(--radius-md)",
-                background: "var(--gradient-accent)",
-                color: "#fff",
-                fontFamily: "var(--font-body)",
-                fontSize: "0.9rem",
-                fontWeight: 600,
-                border: "none",
-                cursor: "pointer",
-                textDecoration: "none",
-              }}
+              className="btn btn-primary"
             >
-              <FiDownload />
+              <FiDownload aria-hidden="true" />
               Download Resume
-            </motion.a>
+              <span className="visually-hidden"> (opens in a new tab)</span>
+            </a>
           </motion.div>
 
           {/* Contact Form */}
@@ -268,22 +260,16 @@ const Contact = () => {
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.4, duration: 0.6 }}
             style={{
-              padding: "32px",
+              padding: "clamp(20px, 4vw, 32px)",
               borderRadius: "var(--radius-lg)",
               background: "var(--bg-card)",
               border: "1px solid var(--border)",
             }}
           >
             {status === "success" ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                style={{ textAlign: "center", padding: "60px 20px" }}
-              >
-                <motion.div
-                  initial={{ scale: 0 }}
-                  animate={{ scale: 1 }}
-                  transition={{ type: "spring", stiffness: 200 }}
+              <div role="status" style={{ textAlign: "center", padding: "48px 12px" }}>
+                <div
+                  aria-hidden="true"
                   style={{
                     width: "64px",
                     height: "64px",
@@ -298,7 +284,7 @@ const Contact = () => {
                   }}
                 >
                   <FiCheck />
-                </motion.div>
+                </div>
                 <h3
                   style={{
                     fontFamily: "var(--font-display)",
@@ -308,16 +294,20 @@ const Contact = () => {
                     color: "var(--text-primary)",
                   }}
                 >
-                  Message Sent!
+                  Message sent
                 </h3>
-                <p
-                  style={{ color: "var(--text-secondary)", fontSize: "0.9rem" }}
-                >
+                <p style={{ color: "var(--text-secondary)", fontSize: "0.95rem", marginBottom: "20px" }}>
                   Thank you for reaching out. I'll get back to you soon.
                 </p>
-              </motion.div>
+                <button type="button" className="btn btn-outline" onClick={() => setStatus("idle")}>
+                  Send another message
+                </button>
+              </div>
             ) : (
-              <div ref={formRef}>
+              <form onSubmit={handleSubmit} noValidate aria-describedby="form-note">
+                <p id="form-note" style={{ fontSize: "0.85rem", color: "var(--text-muted)", marginBottom: "16px" }}>
+                  Fields marked * are required.
+                </p>
                 <div
                   style={{
                     display: "grid",
@@ -328,228 +318,117 @@ const Contact = () => {
                   className="form-row"
                 >
                   <div>
-                    <label
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: "0.72rem",
-                        color: "var(--text-muted)",
-                        letterSpacing: "1px",
-                        textTransform: "uppercase",
-                        marginBottom: "6px",
-                        display: "block",
-                      }}
-                    >
+                    <label htmlFor="contact-name" style={labelStyle}>
                       Name *
                     </label>
                     <input
+                      id="contact-name"
                       name="name"
+                      autoComplete="name"
                       value={form.name}
                       onChange={handleChange}
-                      placeholder="Your name"
                       required
-                      disabled={status === "sending"}
-                      style={{
-                        ...inputStyle,
-                        opacity: status === "sending" ? 0.6 : 1,
-                      }}
-                      onFocus={(e) => {
-                        e.target.style.borderColor = "var(--accent)";
-                      }}
-                      onBlur={(e) => {
-                        e.target.style.borderColor = "var(--border)";
-                      }}
+                      aria-required="true"
+                      disabled={sending}
+                      style={inputStyle}
                     />
                   </div>
                   <div>
-                    <label
-                      style={{
-                        fontFamily: "var(--font-mono)",
-                        fontSize: "0.72rem",
-                        color: "var(--text-muted)",
-                        letterSpacing: "1px",
-                        textTransform: "uppercase",
-                        marginBottom: "6px",
-                        display: "block",
-                      }}
-                    >
+                    <label htmlFor="contact-email" style={labelStyle}>
                       Email *
                     </label>
                     <input
+                      id="contact-email"
                       name="email"
                       type="email"
+                      autoComplete="email"
                       value={form.email}
                       onChange={handleChange}
-                      placeholder="your@email.com"
                       required
-                      disabled={status === "sending"}
-                      style={{
-                        ...inputStyle,
-                        opacity: status === "sending" ? 0.6 : 1,
-                      }}
-                      onFocus={(e) => {
-                        e.target.style.borderColor = "var(--accent)";
-                      }}
-                      onBlur={(e) => {
-                        e.target.style.borderColor = "var(--border)";
-                      }}
+                      aria-required="true"
+                      disabled={sending}
+                      style={inputStyle}
                     />
                   </div>
                 </div>
 
                 <div style={{ marginBottom: "16px" }}>
-                  <label
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.72rem",
-                      color: "var(--text-muted)",
-                      letterSpacing: "1px",
-                      textTransform: "uppercase",
-                      marginBottom: "6px",
-                      display: "block",
-                    }}
-                  >
+                  <label htmlFor="contact-subject" style={labelStyle}>
                     Subject
                   </label>
                   <input
+                    id="contact-subject"
                     name="subject"
                     value={form.subject}
                     onChange={handleChange}
-                    placeholder="Project discussion"
-                    disabled={status === "sending"}
-                    style={{
-                      ...inputStyle,
-                      opacity: status === "sending" ? 0.6 : 1,
-                    }}
-                    onFocus={(e) => {
-                      e.target.style.borderColor = "var(--accent)";
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.borderColor = "var(--border)";
-                    }}
+                    disabled={sending}
+                    style={inputStyle}
                   />
                 </div>
 
-                <div style={{ marginBottom: "24px" }}>
-                  <label
-                    style={{
-                      fontFamily: "var(--font-mono)",
-                      fontSize: "0.72rem",
-                      color: "var(--text-muted)",
-                      letterSpacing: "1px",
-                      textTransform: "uppercase",
-                      marginBottom: "6px",
-                      display: "block",
-                    }}
-                  >
+                <div style={{ marginBottom: "20px" }}>
+                  <label htmlFor="contact-message" style={labelStyle}>
                     Message *
                   </label>
                   <textarea
+                    id="contact-message"
                     name="message"
                     value={form.message}
                     onChange={handleChange}
-                    placeholder="Tell me about your project..."
                     rows={5}
                     required
-                    disabled={status === "sending"}
-                    style={{
-                      ...inputStyle,
-                      resize: "vertical",
-                      minHeight: "120px",
-                      opacity: status === "sending" ? 0.6 : 1,
-                    }}
-                    onFocus={(e) => {
-                      e.target.style.borderColor = "var(--accent)";
-                    }}
-                    onBlur={(e) => {
-                      e.target.style.borderColor = "var(--border)";
-                    }}
+                    aria-required="true"
+                    disabled={sending}
+                    style={{ ...inputStyle, resize: "vertical", minHeight: "120px" }}
                   />
                 </div>
 
-                {status === "error" && (
-                  <motion.div
-                    initial={{ opacity: 0, y: -10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    style={{
-                      display: "flex",
-                      alignItems: "center",
-                      gap: "8px",
-                      padding: "12px 16px",
-                      borderRadius: "var(--radius-sm)",
-                      background: "rgba(239, 68, 68, 0.1)",
-                      border: "1px solid rgba(239, 68, 68, 0.3)",
-                      marginBottom: "16px",
-                      color: "#ef4444",
-                      fontSize: "0.85rem",
-                    }}
-                  >
-                    <FiAlertCircle />
-                    {errorMsg}
-                  </motion.div>
-                )}
+                <div role="alert" aria-live="assertive">
+                  {status === "error" && (
+                    <div
+                      style={{
+                        display: "flex",
+                        alignItems: "center",
+                        gap: "8px",
+                        padding: "12px 16px",
+                        borderRadius: "var(--radius-sm)",
+                        background: "rgba(239, 68, 68, 0.1)",
+                        border: "1px solid rgba(239, 68, 68, 0.4)",
+                        marginBottom: "16px",
+                        color: "var(--text-primary)",
+                        fontSize: "0.9rem",
+                      }}
+                    >
+                      <FiAlertCircle aria-hidden="true" style={{ color: "#ef4444", flexShrink: 0 }} />
+                      {errorMsg}
+                    </div>
+                  )}
+                </div>
 
-                <motion.button
-                  whileHover={
-                    status !== "sending"
-                      ? {
-                          scale: 1.02,
-                          boxShadow: "0 0 30px rgba(249,115,22,0.3)",
-                        }
-                      : {}
-                  }
-                  whileTap={status !== "sending" ? { scale: 0.97 } : {}}
-                  onClick={handleSubmit}
-                  disabled={status === "sending"}
+                <button
+                  type="submit"
+                  disabled={sending}
+                  className="btn btn-primary"
                   style={{
                     width: "100%",
-                    padding: "14px 28px",
-                    borderRadius: "var(--radius-md)",
-                    background:
-                      status === "sending"
-                        ? "var(--bg-tertiary)"
-                        : "var(--gradient-accent)",
-                    color: status === "sending" ? "var(--text-muted)" : "#fff",
-                    fontFamily: "var(--font-body)",
-                    fontSize: "0.95rem",
-                    fontWeight: 600,
-                    border: "none",
-                    cursor: status === "sending" ? "not-allowed" : "pointer",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    gap: "10px",
-                    transition: "all 0.3s ease",
+                    cursor: sending ? "not-allowed" : "pointer",
+                    opacity: sending ? 0.7 : 1,
                   }}
                 >
-                  {status === "sending" ? (
-                    <>
-                      <motion.span
-                        animate={{ rotate: 360 }}
-                        transition={{
-                          duration: 1,
-                          repeat: Infinity,
-                          ease: "linear",
-                        }}
-                        style={{ display: "inline-flex" }}
-                      >
-                        <FiSend />
-                      </motion.span>
-                      Sending...
-                    </>
-                  ) : (
-                    <>
-                      <FiSend />
-                      Send Message
-                    </>
-                  )}
-                </motion.button>
-              </div>
+                  <FiSend aria-hidden="true" />
+                  {sending ? "Sending..." : "Send Message"}
+                </button>
+              </form>
             )}
           </motion.div>
         </div>
       </div>
 
       <style>{`
+        #contact input:focus,
+        #contact textarea:focus {
+          border-color: var(--accent) !important;
+        }
         @media (max-width: 768px) {
           .contact-grid {
             grid-template-columns: 1fr !important;
